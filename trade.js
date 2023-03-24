@@ -58,10 +58,10 @@ app.post('/trade', async(req, res) => {
         await connection.waitSynchronized();
         
         if(sl>cmp){
-              actionType = 'ORDER_TYPE_SELL';
-            } else {
-               actionType = 'ORDER_TYPE_BUY';
-            }
+          actionType = 'ORDER_TYPE_SELL';
+        } else {
+          actionType = 'ORDER_TYPE_BUY';
+        }
 
         // Trade Place 
         const order = {
