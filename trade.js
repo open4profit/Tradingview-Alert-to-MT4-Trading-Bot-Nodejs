@@ -22,7 +22,7 @@ app.get('/', async(req, res) => {
 });
 
 app.post('/trade', async(req, res) => {
-    const { actionType, symbol, volume, openPrice, stopLoss, takeProfit } = req.body;
+    const { cmp, sl, actionType, symbol, volume, openPrice, stopLoss, takeProfit } = req.body;
     req.setTimeout(60000); // Set timeout to 60 seconds (in milliseconds)
     try {
         // Add test MetaTrader account
@@ -56,6 +56,12 @@ app.post('/trade', async(req, res) => {
         // wait until terminal state synchronized to the local state
         console.log('Waiting for SDK to synchronize to terminal state (may take some time depending on your history size)');
         await connection.waitSynchronized();
+        
+        if(sl>cmp){
+              actionType = 'ORDER_TYPE_SELL';
+            } else {
+               actionType = 'ORDER_TYPE_BUY';
+            }
 
         // Trade Place 
         const order = {
