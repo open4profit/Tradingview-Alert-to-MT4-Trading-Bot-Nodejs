@@ -78,6 +78,7 @@ app.post('/trade', async(req, res) => {
                     distance: distance,
                     units: "RELATIVE_PIPS"
                 }
+            }
         };
 
         const config = {
