@@ -72,12 +72,7 @@ app.post('/trade', async(req, res) => {
             takeProfit: takeProfit,
             stopLoss: stopLoss,
             stopLossUnits:"RELATIVE_PIPS",
-            takeProfitUnits:"RELATIVE_PIPS",
-            trailingStopLoss: {
-                distance: {
-                    distance: distance,
-                    units: "RELATIVE_PIPS"
-                }
+            takeProfitUnits:"RELATIVE_PIPS"
         };
 
         const config = {
